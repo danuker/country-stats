@@ -1,6 +1,7 @@
 """
     This script translates the names of countries to country codes
 """
+from logging import warning
 import os
 import re
 
@@ -28,7 +29,7 @@ class CountryRecognizer():
 
                 except ValueError:
                     raise ValueError("ValueError at line: {}".format(line))
-        print("Loaded {} names for {} countries.".format(len(self.codes), len(self.countries)))
+        #print("Loaded {} names for {} countries.".format(len(self.codes), len(self.countries)))
 
     @staticmethod
     def filter(name):
@@ -62,7 +63,7 @@ class CountryRecognizer():
         if nn in self.codes:
             return self.codes[nn]
         else:
-            raise ValueError("Undetected country: '{}' (as '{}')".format(natural_name, nn))
+            warning("Undetected country: '{}' (as '{}')".format(natural_name, nn))
 
     def expand(self, code):
         return self.countries[code]
