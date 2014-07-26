@@ -63,7 +63,12 @@ class CountryRecognizer():
         if nn in self.codes:
             return self.codes[nn]
         else:
-            warning("Undetected country: '{}' (as '{}')".format(natural_name, nn))
+            warning("Undetected country: '{}' (as '{}', added a '-' )".format(natural_name, nn))
+            return '-'+natural_name
 
     def expand(self, code):
-        return self.countries[code]
+        if code in self.countries:
+            return self.countries[code]
+        else:
+            warning("Undetected country code: '{}', added a '-' ".format(code))
+            return '-'+code
