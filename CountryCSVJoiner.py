@@ -9,6 +9,8 @@ Input format:
     Argentina   3.1         123.4
     ....
 """
+
+
 import sys
 import csv
 import pandas
@@ -49,7 +51,7 @@ def main():
 
     a = pandas.DataFrame(a).sort(columns=[FINAL_COUNTRY_COLUMN])
 
-    # Get back the original names
+    # Expand codes back to human names
     a.ix[:, 0] = a.ix[:, 0].apply(cr.expand)
     print(a.to_csv(quoting=True, index=False))
 
