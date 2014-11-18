@@ -53,7 +53,7 @@ def main():
 
     # Expand codes back to human names
     a.ix[:, 0] = a.ix[:, 0].apply(cr.expand)
-    print(a.to_csv(quoting=True, index=False))
+    a.to_csv(path_or_buf=''.join(sys.argv[2:])+'outcome.csv', index=False)
 
 
 if __name__ == '__main__':
